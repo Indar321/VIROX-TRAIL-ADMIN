@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIROX Admin — Products</title><link rel="stylesheet" href="admin.css"></head>
+<body>
+<aside class="sidebar"><a class="brand" href="index.html">VIROX<span>®</span></a><p class="side-label">STORE MANAGEMENT</p><a class="side-link active" href="admin.html">▦　Products</a><a class="side-link" href="index.html">↗　View storefront</a><div class="side-note">ADMIN PREVIEW<br><small>Local browser storage</small></div></aside>
+<main class="main">
+<header class="topbar"><div><p class="eyebrow">VIROX / ADMINISTRATION</p><h1>Products</h1></div><a class="view-store" href="index.html">View store ↗</a></header>
+<div class="notice"><b>Preview mode:</b> Product changes are saved in this browser only. They are not yet synced to Supabase or other devices. Do not treat this as a secured live admin panel.</div>
+<section class="stats"><article><span>Total products</span><strong id="statProducts">0</strong></article><article><span>Featured products</span><strong id="statFeatured">0</strong></article><article><span>Categories</span><strong id="statCategories">0</strong></article><article><span>Low stock</span><strong id="statLow">0</strong></article></section>
+<section class="toolbar"><div><h2>Product catalogue</h2><p>Manage your VIROX product listings</p></div><div class="toolbar-actions"><input id="searchProducts" placeholder="Search products…" type="search"><button class="btn secondary" id="exportBtn">Export CSV</button><button class="btn primary" id="addBtn">＋ Add product</button></div></section>
+<section class="table-wrap"><table><thead><tr><th>PRODUCT</th><th>SKU</th><th>PRICE</th><th>CATEGORY</th><th>STOCK</th><th>STATUS</th><th></th></tr></thead><tbody id="productRows"></tbody></table><div id="emptyState" class="empty" hidden>No products found. Add your first product.</div></section>
+</main>
+<div class="modal" id="productModal" aria-hidden="true"><div class="modal-card"><div class="modal-head"><div><p class="eyebrow">CATALOGUE MANAGEMENT</p><h2 id="modalTitle">Add product</h2></div><button class="icon-close" id="closeModal">×</button></div>
+<form id="productForm">
+<input type="hidden" id="originalId">
+<div class="form-grid">
+<label class="wide">Product name *<input id="name" required placeholder="e.g. RAGE OVERSIZED TEE"></label>
+<label>Product ID / SKU *<input id="sku" required placeholder="VRX-013"></label>
+<label>Category<select id="category"><option>ESSENTIALS</option><option>GRAPHIC SERIES</option><option>NEW DROP</option><option>ACCESSORIES</option><option>HOODIES</option><option>BESTSELLERS</option></select></label>
+<label>Selling price (₹) *<input id="price" type="number" min="0" required></label>
+<label>Compare-at price (₹)<input id="compare" type="number" min="0"></label>
+<label>Stock quantity<input id="stock" type="number" min="0" value="0"></label>
+<label>Product badge<select id="tag"><option>NEW DROP</option><option>BESTSELLER</option><option>LIMITED</option><option>TRENDING</option><option>ESSENTIALS</option><option>EVERYDAY</option></select></label>
+<label class="wide">Fabric / GSM<input id="gsm" placeholder="240 GSM Combed Cotton"></label>
+<label class="wide">Main image URL *<input id="image" type="url" required placeholder="https://…"></label>
+<label class="wide">Additional image URLs <small>Separate each URL with a comma</small><textarea id="images" rows="2" placeholder="https://image-2.jpg, https://image-3.jpg"></textarea></label>
+<label>Available sizes<input id="sizes" value="S, M, L, XL, XXL"></label>
+<label>Available colours<input id="colors" value="Black, White"></label>
+<label class="wide">Description<textarea id="description" rows="3" placeholder="Describe fabric, fit, print and product details…"></textarea></label>
+<label class="check wide"><input id="featured" type="checkbox"> Feature this product on the storefront</label>
+</div>
+<div class="modal-actions"><button type="button" class="btn secondary" id="cancelBtn">Cancel</button><button type="submit" class="btn primary">Save product</button></div>
+</form></div></div>
+<div class="toast" id="toast"></div><script src="admin.js"></script></body></html>
